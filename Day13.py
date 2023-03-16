@@ -33,8 +33,8 @@ print(split.split(" "))
 # capitalize(): turns only the first character of the string to uppercase and rest all items are turned to lower case
 
 cap = "hello"
-cap1 = "heLlO WORLD"
 print(cap.capitalize())
+cap1 = "heLlO WORLD"
 print(cap1.capitalize())
 
 # center(): alligns the string to the center as per the parameters given by the user.
