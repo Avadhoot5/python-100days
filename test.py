@@ -169,7 +169,7 @@
 
 # from PIL import Image
 
-# imageURL = 'C:\\Users\\bavdo\\Pictures\\Screenshots\\Fact.png'
+# imageURL = 'C:\\Users\\username\\Pictures\\Screenshots\\Fact.png'
 
 # def imageView(path):
 #     im = Image.open(f'{path}')
@@ -305,7 +305,7 @@
 #                 return True
 #         return False
 
-#     filePath = "C:\\Users\\bavdo\\Desktop\\Desktop Files\\Desktop Programming Files\\100 days python\\Exercise7"
+#     filePath = "C:\\Users\\username\\Desktop\\Desktop Files\\Desktop Programming Files\\100 days python\\Exercise7"
     
 
 #     listDir = os.listdir(filePath)
@@ -524,26 +524,162 @@ def print_fibo(n):
 # primeL = [i for i in range(2, n+1) if all((i%j != 0) for j in range(2, int(i**0.5+1)))]
 # print(primeL)
 
+# class Vector:
+
+#     def __init__(self, i, j, k):
+#         self.i = i
+#         self.j = j
+#         self.k = k
+    
+#     def __str__(self):
+#         return f'{self.i}i + {self.j}j + {self.k}k'
+    
+#     def __add__(self, x):
+#         return Vector(self.i + x.i, self.j + x.j, self.k + x.k)
+    
+# v1 = Vector(2,5,8)
+
+# v2 = Vector(4, 2, 1)
+
+# print(v1 + v2)
+# print(type(v1 + v2))
+
+# Single Inheritance
+
+# class Animal:
+#     def __init__(self, name, species):
+#         self.name = name
+#         self.species = species
+    
+#     def make_sound(self):
+#         print('Animal is making the sound')
+
+# class Dog(Animal):
+#     def __init__(self, name, breed):
+#         super().__init__(name, species='Dog')
+#         self.breed = breed
+    
+#     def make_sound(self):
+#         print('dog is making sound baw')
+
+# a1 = Animal('cat', 'persian')
+# a1.make_sound()
+
+# d1 = Dog('Tommy', 'husky')
+# d1.make_sound()
+
+# print(Dog.mro())
 
 
+# Multiple Inheritance
+
+# class Employee:
+#     def __init__(self, name):
+#         self.name = name
+
+#     def show(self):
+#         print(f'the name of the employee is: {self.name}')
+    
+# class Dancer:
+#     def __init__(self, dance):
+#         self.dance = dance
+    
+#     def show(self):
+#         print(f'The employee knows {self.dance} dance')
+
+# class EmployeeDancer(Employee, Dancer):
+#     def __init__(self, name, dance):
+#         self.name = name 
+#         self.dance = dance 
+    
+# o1 = EmployeeDancer('Rahul', 'Free-style')
+# o1.show()
+# print(EmployeeDancer.mro())
+
+# Time Module 
+
+import time as t
+
+# def whileLoop():
+#     i = 0
+#     while (i < 1000):
+#         print(i)
+#         i += 1
+
+# def forLoop():
+#     for i in range(1000):
+#         print(i)
+    
+
+# start_while = t.time()
+# whileLoop()
+# end_while = t.time()
+
+# start_for = t.time()
+# forLoop()
+# end_for = t.time()
+
+# print(f'While loop time: {end_while - start_while}')
+
+# print(f'For loop time: {end_for - start_for}')
+
+# print('Hello, the next message will print after 2 seconds')
+# t.sleep(2)
+# print('goodbye')
+
+# request module
+
+import requests
+from bs4 import BeautifulSoup
+
+def parse_text():
+    URL = 'https://jsonplaceholder.typicode.com/todos/1'
+
+    response = requests.get(URL)
+
+    print(response.text)
+
+# parse_text()
+
+# post request
+
+def post_method():
+    URL = 'https://jsonplaceholder.typicode.com/posts'
+    
+    data = {
+        "title": 'foo',
+        "body": 'bar',
+        "userId": 5
+    }
+
+    headers = {
+        "Content-type": 'application/json; charset = UTF-8'
+    }
+
+    response = requests.post(URL, headers=headers, json=data)
+    print(response.text)
+
+# post_method()
 
 
+def parse_HTML():
+    URL = "https://www.codewithharry.com/blogpost/django-cheatsheet/"
 
+    response = requests.get(URL)
+    # print(response.text)
 
+    text_format = BeautifulSoup(response.text, 'html.parser')
 
+    try:
+        with open('./HTTP_test/google_output.html', 'w') as fs:
+            # fs.write(str(text_format.prettify()))
+            for words in text_format.find_all('h2'):
+                fs.write(str(words) + '\n')
+            print('HTML contents written sucess')
+    except Exception as e:
+        print(e)
 
-
-
-
-
-
-
-
-
-
-
-
-
+# parse_HTML()
 
 
 
