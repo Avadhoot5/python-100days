@@ -629,8 +629,8 @@ import time as t
 
 # request module
 
-import requests
-from bs4 import BeautifulSoup
+# import requests
+# from bs4 import BeautifulSoup
 
 def parse_text():
     URL = 'https://jsonplaceholder.typicode.com/todos/1'
@@ -681,13 +681,35 @@ def parse_HTML():
 
 # parse_HTML()
 
+def generate():
+    for i in range(10):
+        yield i
 
+# value = generate()
+# print(next(value))
+# print(next(value))
 
+# import functools
+# import time
 
+# @functools.lru_cache(maxsize=None)
+# def fx(n):
+#     time.sleep(2)
+#     return n*5
 
+# print(fx(5))
+# print('Done for 5')
+# print(fx(10))
+# print('Done for 10')
+# print(fx(15))
+# print('Done for 15')
 
-
-
+# print(fx(5))
+# print('Done for 5')
+# print(fx(10))
+# print('Done for 10')
+# print(fx(15))
+# print('Done for 15')
 
 
 
