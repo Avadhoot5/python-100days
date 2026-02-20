@@ -711,16 +711,71 @@ def generate():
 # print(fx(15))
 # print('Done for 15')
 
+# import re
 
+# text = '''
+# a Cyclone is a large air mass Dyclone that rotates around a strong center of low atmospheric pressure, Nyclone counterclockwise in the Northern Hemisphere and clockwise in the Southern Hemisphere as viewed from above (opposite to an anticyclone).[1][2] Cyclones are characterized by inward-spiraling winds that rotate about a zone of low pressure.[3][4] The largest low-pressure systems are polar vortices and extratropical cyclones of the largest scale (the synoptic scale). Warm-core cyclones such as tropical cyclones and subtropical cyclones also lie within the synoptic scale.
+# '''
 
+# pattern = r'[A-Z]yclone'
 
+# match_clone = re.findall(pattern, text)
+# print(match_clone)
 
+# matches = re.finditer(pattern, text)
 
+# for match in matches:
+#     print(match)
+#     print(match[0])
 
+# Async programming in python - check async_env folder
 
+import threading, time
+from concurrent.futures import ThreadPoolExecutor
 
+def func_sleep(seconds):
+    print(f'Sleeping for {seconds} seconds')
+    time.sleep(seconds)
+    return seconds
 
+# time1 = time.perf_counter()
+# func_sleep(3)
+# func_sleep(2)
+# func_sleep(1)
+# time2 = time.perf_counter()
+# print(time2-time1)
 
+def main():
+    time3 = time.perf_counter()
+
+    # make the fn run on different threads
+    t1 = threading.Thread(target=func_sleep, args=[3])
+    t2 = threading.Thread(target=func_sleep, args=[2])
+    t3 = threading.Thread(target=func_sleep, args=[1])
+
+    # start the thread 
+    t1.start()
+    t2.start()
+    t3.start()
+
+    t1.join() # wait until t1 is completed
+    t2.join()
+    t3.join()
+
+    time4 = time.perf_counter()
+
+    print(time4 - time3)
+
+# using ThreadPoolExecutor for executing multiple tasks
+
+def thread_pool():
+    with ThreadPoolExecutor() as executer:
+        a = [5,4,3,2,1]
+        results = executer.map(func_sleep, a)
+        for result in results:
+            print(result)
+
+# thread_pool()
 
 
 
